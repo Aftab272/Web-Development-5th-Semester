@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Lecture 5: CSS Selectors.">
+  <title>Lecture 5: CSS Selectors</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="container">
+    <article class="panel">
+      <header class="lesson-header">
+        <p class="lesson-number">Lecture 5</p>
+        <h2>CSS Selectors</h2>
+        <p class="lesson-subtitle">Choose exactly which elements receive a style.</p>
+      </header>
+      <section class="lesson-section">
+        <h3>Summary</h3>
+        <p>A CSS selector matches one or more HTML elements. Type selectors target element names, class selectors can be reused, and ID selectors target a unique element. Combining selectors helps organize page styles precisely.</p>
+      </section>
+      <section class="lesson-section">
+        <h3>Topics Covered</h3>
+        <ul class="topic-list">
+          <li>Element selectors, such as p and h1</li>
+          <li>Class selectors, written with a dot</li>
+          <li>ID selectors, written with a hash</li>
+          <li>Grouping and descendant selectors</li>
+        </ul>
+      </section>
+      <section class="lesson-section">
+        <h3>Example Code</h3>
+        <pre class="code-example"><code>p {
+  color: #526174;
+}
+
+.highlight {
+  background-color: #edf3fc;
+}
+
+#page-title {
+  color: #2f5fa8;
+}</code></pre>
+      </section>
+      <section class="lesson-section">
+        <h3>Output</h3>
+        <div class="example-output"><strong class="example-blue">Page title</strong><p class="example-muted">All paragraphs use muted text.</p><p class="example-highlight">An element with the highlight class has a pale blue background.</p></div>
+      </section>
+      <nav class="lesson-navigation" aria-label="Lecture navigation">
+        <a href="index.html">Home</a><span aria-hidden="true">|</span><a href="lecture4.html">Previous Lecture</a><span aria-hidden="true">|</span><a href="lecture6.html">Next Lecture</a>
+      </nav>
+    </article>
+  </main>
+</body>
+</html>

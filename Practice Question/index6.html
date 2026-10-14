@@ -1,0 +1,60 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Align Items</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 15px;
+    height: 220px;
+    background-color: #e2e8f0;
+    padding: 10px;
+}
+
+.box {
+    width: 120px;
+    color: white;
+    background-color: #2563eb;
+    text-align: center;
+    padding-top: 10px;
+    border-radius: 6px;
+}
+
+.box1 {
+    height: 60px;
+}
+
+.box2 {
+    height: 110px;
+    background-color: #16a34a;
+}
+
+.box3 {
+    height: 160px;
+    background-color: #9333ea;
+}
+</style>
+</head>
+<body>
+
+    <h2>Align Items Demo</h2>
+
+    <div class="container">
+        <div class="box box1">Box 1</div>
+        <div class="box box2">Box 2</div>
+        <div class="box box3">Box 3</div>
+    </div>
+
+</body>
+</html>

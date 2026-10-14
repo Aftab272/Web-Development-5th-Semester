@@ -1,0 +1,58 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flex Shorthand</title>
+
+  <style>
+    .container {
+      display: flex;
+      width: 700px;
+      max-width: 100%;
+      gap: 10px;
+      background: #e2e8f0;
+      padding: 10px;
+      box-sizing: border-box;
+    }
+
+    .box {
+      height: 120px;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      border-radius: 8px;
+      min-width: 0;
+    }
+
+    .box1 {
+      flex: 1 1 150px;
+      background: #2563eb;
+    }
+
+    .box2 {
+      flex: 2 1 150px;
+      background: #16a34a;
+    }
+
+    .box3 {
+      flex: 1 1 150px;
+      background: #9333ea;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Flex Shorthand Example</h2>
+
+  <div class="container">
+    <div class="box box1">Box 1</div>
+    <div class="box box2">Box 2</div>
+    <div class="box box3">Box 3</div>
+  </div>
+
+</body>
+</html>

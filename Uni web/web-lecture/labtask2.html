@@ -1,0 +1,217 @@
+Replace `labtask2.html` with this. The blue panel contains the field labels, and the white panel contains the inputs.
+
+````html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Form</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 16px 5px;
+            background: #fafafa;
+            font-family: Arial, sans-serif;
+            color: #555;
+        }
+
+        .grey-bar {
+            height: 34px;
+            padding: 10px 8px;
+            background: #c9c9c9;
+            color: #333;
+            text-align: right;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .contact-card {
+            display: grid;
+            grid-template-columns: 36% 64%;
+            width: min(680px, 85%);
+            margin: 34px auto 58px;
+            background: #fff;
+            border: 1px solid #eee;
+            box-shadow: 0 0 3px #eee;
+        }
+
+        .labels-panel {
+            padding: 14px 12px;
+            background: #43b9df;
+            color: white;
+        }
+
+        .labels-panel h1 {
+            margin: 0;
+            font-size: 15px;
+        }
+
+        .labels-panel .subtitle {
+            margin: 2px 0 22px;
+            font-size: 17px;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+
+        .field-label {
+            display: flex;
+            align-items: center;
+            height: 32px;
+            margin-bottom: 8px;
+            padding: 0 8px;
+            background: rgba(255, 255, 255, 0.25);
+            font-size: 11px;
+        }
+
+        .send-button {
+            width: 100%;
+            margin-top: 24px;
+            padding: 10px;
+            border: 0;
+            background: rgba(255, 255, 255, 0.25);
+            color: white;
+            cursor: pointer;
+        }
+
+        .form-panel {
+            padding: 18px 20px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 22px;
+        }
+
+        .social-links a {
+            display: grid;
+            width: 30px;
+            height: 30px;
+            place-items: center;
+            color: white;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .facebook { background: #3b5998; }
+        .twitter { background: #27b8cf; }
+        .instagram { background: #e34d91; }
+        .google { background: #444; }
+
+        .form-row {
+            position: relative;
+            margin-bottom: 8px;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            padding: 9px;
+            border: 1px solid #eee;
+            background: #fff;
+            color: #555;
+            font: inherit;
+            font-size: 12px;
+            outline: none;
+        }
+
+        input,
+        select {
+            height: 32px;
+        }
+
+        textarea {
+            height: 74px;
+            resize: vertical;
+        }
+
+        .form-row.has-icon input {
+            padding-right: 34px;
+        }
+
+        .input-icon {
+            position: absolute;
+            top: 8px;
+            right: 10px;
+            color: #43b9df;
+            font-size: 13px;
+        }
+
+        @media (max-width: 560px) {
+            .contact-card {
+                width: 95%;
+                grid-template-columns: 38% 62%;
+            }
+
+            .labels-panel,
+            .form-panel {
+                padding: 12px 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="grey-bar">Grey color</div>
+
+    <main class="contact-card">
+        <section class="labels-panel">
+            <h1>Blue color white text</h1>
+            <p class="subtitle">Contact Now</p>
+
+            <div class="field-label">Username</div>
+            <div class="field-label">Password</div>
+            <div class="field-label">Department</div>
+            <div class="field-label">Message</div>
+
+            <button class="send-button" type="submit" form="contact-form">
+                Send Message
+            </button>
+        </section>
+
+        <section class="form-panel">
+            <nav class="social-links" aria-label="Social links">
+                <a class="facebook" href="#" aria-label="Facebook">f</a>
+                <a class="twitter" href="#" aria-label="Twitter">♥</a>
+                <a class="instagram" href="#" aria-label="Instagram">◎</a>
+                <a class="google" href="#" aria-label="Google Plus">g+</a>
+            </nav>
+
+            <form id="contact-form">
+                <div class="form-row has-icon">
+                    <input type="text" name="username" aria-label="Username">
+                    <span class="input-icon">♟</span>
+                </div>
+
+                <div class="form-row has-icon">
+                    <input type="password" name="password" aria-label="Password">
+                    <span class="input-icon">✉</span>
+                </div>
+
+                <div class="form-row">
+                    <select name="department" aria-label="Department">
+                        <option value="">Select a Department</option>
+                        <option>Computer Science</option>
+                        <option>Engineering</option>
+                        <option>Business</option>
+                    </select>
+                </div>
+
+                <div class="form-row">
+                    <textarea name="message" aria-label="Message"></textarea>
+                </div>
+            </form>
+        </section>
+    </main>
+
+    <div class="grey-bar">Grey color</div>
+</body>
+</html>
+````

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Lecture 3: HTML Forms and Media.">
+  <title>Lecture 3: HTML Forms and Media</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="container">
+    <article class="panel">
+      <header class="lesson-header">
+        <p class="lesson-number">Lecture 3</p>
+        <h2>HTML Forms and Media</h2>
+        <p class="lesson-subtitle">Collect information and add rich media to a page.</p>
+      </header>
+      <section class="lesson-section">
+        <h3>Summary</h3>
+        <p>HTML forms let visitors enter information and submit it. Form controls include text fields, email fields, and buttons. Images, audio, and video can also be included to make page content more useful and engaging.</p>
+      </section>
+      <section class="lesson-section">
+        <h3>Topics Covered</h3>
+        <ul class="topic-list">
+          <li>Form, label, input, and button elements</li>
+          <li>Input types such as text, email, and password</li>
+          <li>Labels and required-field validation</li>
+          <li>Adding images with descriptive alternative text</li>
+        </ul>
+      </section>
+      <section class="lesson-section">
+        <h3>Example Code</h3>
+        <pre class="code-example"><code>&lt;form&gt;
+  &lt;label for="email"&gt;Email address&lt;/label&gt;
+  &lt;input id="email" type="email" required&gt;
+  &lt;button type="submit"&gt;Join&lt;/button&gt;
+&lt;/form&gt;
+&lt;img src="photo.jpg" alt="A view of the campus"&gt;</code></pre>
+      </section>
+      <section class="lesson-section">
+        <h3>Output</h3>
+        <div class="example-output"><p>A labelled email field and Join button appear, followed by an image with alternative text for visitors using assistive technology.</p></div>
+      </section>
+      <nav class="lesson-navigation" aria-label="Lecture navigation">
+        <a href="index.html">Home</a><span aria-hidden="true">|</span><a href="lecture2.html">Previous Lecture</a><span aria-hidden="true">|</span><a href="lecture4.html">Next Lecture</a>
+      </nav>
+    </article>
+  </main>
+</body>
+</html>

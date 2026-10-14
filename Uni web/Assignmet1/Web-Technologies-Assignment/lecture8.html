@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Lecture 8: Introduction to JavaScript.">
+  <title>Lecture 8: Introduction to JavaScript</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="container">
+    <article class="panel">
+      <header class="lesson-header">
+        <p class="lesson-number">Lecture 8</p>
+        <h2>Introduction to JavaScript</h2>
+        <p class="lesson-subtitle">Add behavior and interactivity to web pages.</p>
+      </header>
+      <section class="lesson-section">
+        <h3>Summary</h3>
+        <p>JavaScript is a programming language that runs in the browser and can respond to user actions. It can select HTML elements, update their content, and react to events such as a button click.</p>
+      </section>
+      <section class="lesson-section">
+        <h3>Topics Covered</h3>
+        <ul class="topic-list">
+          <li>Including JavaScript in a webpage</li>
+          <li>Variables and simple values</li>
+          <li>DOM elements and changing page content</li>
+          <li>Events and event listeners</li>
+        </ul>
+      </section>
+      <section class="lesson-section">
+        <h3>Example Code</h3>
+        <pre class="code-example"><code>&lt;button id="hello-button"&gt;Say hello&lt;/button&gt;
+&lt;p id="message"&gt;&lt;/p&gt;
+
+&lt;script&gt;
+  document.querySelector("#hello-button")
+    .addEventListener("click", function () {
+      document.querySelector("#message").textContent = "Hello!";
+    });
+&lt;/script&gt;</code></pre>
+      </section>
+      <section class="lesson-section">
+        <h3>Output</h3>
+        <div class="example-output"><p>When the visitor clicks “Say hello”, JavaScript displays “Hello!” in the paragraph.</p></div>
+      </section>
+      <nav class="lesson-navigation" aria-label="Lecture navigation">
+        <a href="index.html">Home</a><span aria-hidden="true">|</span><a href="lecture7.html">Previous Lecture</a><span aria-hidden="true">|</span><span class="disabled" aria-disabled="true">Next Lecture</span>
+      </nav>
+    </article>
+  </main>
+</body>
+</html>

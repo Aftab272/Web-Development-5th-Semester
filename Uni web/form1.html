@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>form </title>
+<style>
+  h1{
+    color:green;
+}
+a:hover {
+    color: rgb(0, 153, 255);
+    text-decorations: underline;
+}
+p::first-line {
+    font-size: 2em;
+    font-weiht:bold;
+    color: rgb(19, 0, 128);
+}
+::selection{
+    background:rgb(255, 0, 200);
+    color:black;
+    }
+   p::marker {
+        color: red;
+        font-size:2.5;
+
+    }
+    .tittle::before {
+        content: "77";
+        color:brown;
+    }
+    .tittle::after {
+        content: "*00";
+        color:brown;
+    }
+    input:focus {
+        border: 2px solid teal;
+        outline: white;
+
+    }
+    button:disabled {
+        opacity: .5;
+    }
+    button:hover {
+        background: navy;
+        color: white;
+    }
+
+</style>
+</head>
+<body>
+    <h1>Form</h1>
+    <p>aftab akram</p>
+    <p>ali is a developer</p>
+    <form>
+        <fieldset>
+            <legend><b>Sigup</b></legend>
+            <label for="name"> <b>Name:</b></label>
+    <input type="text" id="name"  name="password" > <br><br>
+
+    <label for="password"><b>Password:</b></label>
+    <input type="password" id="password" name="password" ><br><br>
+    <label for="email"><b>Email:</b></label>
+    <input type="email" id="email" name="email"><br><br>
+    <label for="search"><b>Search:</b></label>
+    <input type="search" id="search"  name="password" ><br><br>
+    <label for="number"><b>Number:</b></label>
+    <input type="number" id="Number"  name="password" ><br><br>
+    <label for="tel"><b>Tel:</b></label>
+    <input type="tel" id="tel"  name="password" ><br><br>
+    <label for="Url"><b>Url :</b></label>
+    <input type="url" id="Url"  name="password" ><br><br>
+    <label for="file"><b>File:</b></label>
+    <input type="file" id="file"  name="password" ><br><br>
+    <label for="hidden"><b>Hidden:</b></label>
+    <input type="hidden" id="hidden"  name="password" ><br><br>
+    <label for="button"><b>Button:</b></label>
+    <input type="button" id="button"  name="password" ><br><br>
+     <select> 
+    <option>Computer Science</option>
+    <option>Software Engineering</option>
+    <option>Cyber Security</option>
+    <option>Artifical Intelligence</option>
+   </select><br><br>
+    <label for="submit"><b>Course Submit:</b></label>
+    <input type="submit" id="submit"  name="password" ><br><br>
+    <label for="radio"><b>Radio:</b></label>
+    <input type="radio" id="radio"  name="password" ><br><br>
+    <a href="https://chatgpt.com/">Chatgpt</a>
+    <label for="date"><b>Date:</b></label>
+    <input type="date" id="date"  name="password" ><br><br>
+    <label for="time"><b>Time:</b></label>
+    <input type="time" id="time"  name="password" ><br><br>
+    <label for="week">Week:</label>
+    <input type="week" id="week"  name="password" ><br><br>
+    <label for="color">Color:</label>
+    <input type="color" id="color"  name="password" ><br><br>
+    <label for="image">Image:</label>
+    <input type="image" id="image"  name="password" ><br><br>
+    <label for="checkbox">Checkbox:</label>
+    <input type="checkbox" id="checkbox"  name="password" >Correct<br><br>
+    <label for="checkbox">Checkbox:</label>
+    <input type="checkbox" id="checkbox"  name="password" >Wrong<br><br>
+    <label for="month">Month:</label>
+    <input type="month" id="month"  name="password" ><br><br>
+    <label for="range">Range:</label>
+    <input type="range" id="range"  name="password" ><br><br>
+
+
+    <label>Gender:</label><br>
+    <input type="radio" id="male" name="Gender" value="male">
+    <label for="male">Male</label><br>
+    <input type="radio" id="female" name="Gender" value="female">
+    <label for="female">Female</label><br><br>
+    <label for="reset">Reset:</label>
+    <input type="reset" id="reset" ><br><br>
+        </fieldset>
+   
+    </select><br><br>
+    <input type="login" value="login">
+    <input type="Cancel" value="Cancel"><br><br>
+    <button>Submitted</button><br><br>
+    <button disabled>Disabled</button>
+  </form>
+</body>
+</html>

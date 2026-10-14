@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A student website covering eight Web Technologies lectures.">
+  <title>Web Technologies | Home</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <h1>Web Technologies</h1>
+    <p class="student-details">Your Name <span aria-hidden="true">|</span> Your Registration Number</p>
+  </header>
+
+  <main class="container">
+    <section class="panel" aria-labelledby="lectures-heading">
+      <div class="section-heading">
+        <p class="eyebrow">Course material</p>
+        <h2 id="lectures-heading">Lecture Directory</h2>
+        <p class="intro">Explore the topics covered in our Web Technologies course.</p>
+      </div>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Lecture No</th>
+              <th scope="col">Lecture Title</th>
+              <th scope="col">Link</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row">Lecture 1</th><td>Introduction to Web Technologies</td><td><a class="view-link" href="lecture1.html">View</a></td></tr>
+            <tr><th scope="row">Lecture 2</th><td>HTML Basics</td><td><a class="view-link" href="lecture2.html">View</a></td></tr>
+            <tr><th scope="row">Lecture 3</th><td>HTML Forms and Media</td><td><a class="view-link" href="lecture3.html">View</a></td></tr>
+            <tr><th scope="row">Lecture 4</th><td>Introduction to CSS</td><td><a class="view-link" href="lecture4.html">View</a></td></tr>
+            <tr><th scope="row">Lecture 5</th><td>CSS Selectors</td><td><a class="view-link" href="lecture5.html">View</a></td></tr>
+            <tr><th scope="row">Lecture 6</th><td>CSS Box Model &amp; Layout</td><td><a class="view-link" href="lecture6.html">View</a></td></tr>
+            <tr><th scope="row">Lecture 7</th><td>Responsive Web Design</td><td><a class="view-link" href="lecture7.html">View</a></td></tr>
+            <tr><th scope="row">Lecture 8</th><td>Introduction to JavaScript</td><td><a class="view-link" href="lecture8.html">View</a></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <nav class="home-navigation" aria-label="Lecture navigation">
+        <a href="index.html" aria-current="page">Home</a>
+        <span aria-hidden="true">|</span>
+        <a href="lecture1.html">Start learning</a>
+      </nav>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>Web Technologies · CSC336</p>
+  </footer>
+</body>
+</html>

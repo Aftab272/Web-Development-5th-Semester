@@ -1,0 +1,71 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nested Flexbox</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    .parent {
+      display: flex;
+      gap: 15px;
+      padding: 15px;
+      background-color: #e2e8f0;
+      align-items: stretch;
+    }
+
+    .left {
+      flex: 1;
+      background-color: #2563eb;
+      color: white;
+      padding: 25px;
+      border-radius: 8px;
+    }
+
+    .right {
+      flex: 2;
+      display: flex;
+      gap: 10px;
+      background-color: #cbd5e1;
+      padding: 15px;
+      border-radius: 8px;
+    }
+
+    .box {
+      flex: 1;
+      background-color: #16a34a;
+      color: white;
+      padding: 25px 10px;
+      text-align: center;
+      border-radius: 8px;
+    }
+
+    @media (max-width: 500px) {
+      .parent {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Nested Flexbox Example</h2>
+
+  <div class="parent">
+    <div class="left">
+      Left Section
+    </div>
+
+    <div class="right">
+      <div class="box">Box A</div>
+      <div class="box">Box B</div>
+    </div>
+  </div>
+
+</body>
+</html>
