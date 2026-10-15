@@ -1,0 +1,394 @@
+
+/* ==================================
+   PROFESSIONAL CV - CSS STYLESHEET
+   ================================== */
+
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --navy: #14243a;
+    --blue: #2563eb;
+    --light-blue: #dbeafe;
+    --text: #273449;
+    --muted: #64748b;
+    --background: #f1f5f9;
+    --white: #ffffff;
+    --border: #e2e8f0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: var(--background);
+    color: var(--text);
+    line-height: 1.6;
+    padding: 35px 15px;
+}
+
+/* Main CV Layout */
+.cv-container {
+    display: grid;
+    grid-template-columns: 34% 66%;
+    max-width: 1000px;
+    margin: 0 auto;
+    background: var(--white);
+    box-shadow: 0 12px 40px rgba(15, 23, 42, 0.12);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+/* Left Sidebar */
+.sidebar {
+    background: var(--navy);
+    color: var(--white);
+    padding: 35px 25px;
+}
+
+/* Profile */
+.profile {
+    text-align: center;
+    padding-bottom: 28px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+
+.profile-icon {
+    width: 150px;
+    height: 150px;
+    margin: 0 auto 25px;
+    border: 4px solid #3b82f6;
+    border-radius: 50%;
+    overflow: hidden;
+    background: #dbeafe;
+    box-shadow: 0 0 0 5px rgba(59, 130, 246, 0.15);
+    flex-shrink: 0;
+}
+
+.profile-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+    border-radius: 50%;
+}
+
+.designation {
+    color: #bfdbfe;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+/* Sidebar Sections */
+.sidebar-section {
+    margin-top: 27px;
+}
+
+.sidebar-section h2 {
+    font-size: 15px;
+    letter-spacing: 1.5px;
+    color: #93c5fd;
+    padding-bottom: 9px;
+    margin-bottom: 17px;
+    border-bottom: 2px solid #3b82f6;
+}
+
+/* Contact Details */
+.contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 11px;
+    margin-bottom: 15px;
+    font-size: 12px;
+}
+
+.contact-item i {
+    width: 16px;
+    margin-top: 4px;
+    color: #93c5fd;
+}
+
+.contact-item a {
+    color: #f8fafc;
+    text-decoration: none;
+    overflow-wrap: anywhere;
+}
+
+.contact-item a:hover {
+    color: #93c5fd;
+    text-decoration: underline;
+}
+
+/* Skill Bars */
+.skill {
+    margin-bottom: 17px;
+}
+
+.skill-info {
+    font-size: 12px;
+    margin-bottom: 7px;
+}
+
+.skill-bar {
+    height: 6px;
+    background: #34465e;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.skill-bar span {
+    display: block;
+    height: 100%;
+    background: #60a5fa;
+    border-radius: 10px;
+}
+
+/* Sidebar List */
+.sidebar-list {
+    list-style: none;
+}
+
+.sidebar-list li {
+    position: relative;
+    padding-left: 17px;
+    margin-bottom: 10px;
+    font-size: 12px;
+}
+
+.sidebar-list li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: #93c5fd;
+    font-weight: bold;
+}
+
+/* Right Content */
+.main-content {
+    padding: 40px 35px;
+    min-width: 0;
+}
+
+.content-section {
+    margin-bottom: 30px;
+}
+
+.section-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 17px;
+    color: var(--navy);
+    padding-bottom: 10px;
+    margin-bottom: 18px;
+    border-bottom: 2px solid var(--border);
+    letter-spacing: 0.5px;
+}
+
+.section-title i {
+    color: var(--blue);
+    font-size: 18px;
+}
+
+/* Summary */
+.summary {
+    font-size: 13px;
+    line-height: 1.9;
+    text-align: justify;
+    color: #475569;
+}
+
+/* Education and Experience */
+.timeline-item {
+    border-left: 3px solid var(--blue);
+    padding: 0 0 5px 18px;
+    margin-left: 4px;
+}
+
+.date {
+    display: inline-block;
+    color: var(--blue);
+    background: var(--light-blue);
+    font-size: 11px;
+    font-weight: bold;
+    padding: 4px 10px;
+    border-radius: 4px;
+    margin-bottom: 9px;
+}
+
+.timeline-item h3 {
+    font-size: 15px;
+    color: var(--navy);
+    margin-bottom: 4px;
+}
+
+.timeline-item h4 {
+    font-size: 12px;
+    color: var(--blue);
+    margin-bottom: 6px;
+}
+
+.timeline-item p {
+    font-size: 12px;
+    margin-bottom: 6px;
+}
+
+.muted {
+    color: var(--muted);
+}
+
+/* Expertise Cards */
+.expertise-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 13px;
+}
+
+.expertise-card {
+    padding: 16px 13px;
+    background: #f8fafc;
+    border: 1px solid var(--border);
+    border-radius: 7px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.expertise-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(15, 23, 42, 0.08);
+}
+
+.expertise-card i {
+    font-size: 22px;
+    color: var(--blue);
+    margin-bottom: 9px;
+}
+
+.expertise-card h3 {
+    font-size: 13px;
+    color: var(--navy);
+    margin-bottom: 7px;
+}
+
+.expertise-card p {
+    color: var(--muted);
+    font-size: 11px;
+    line-height: 1.7;
+}
+
+/* Experience Details */
+.details-list {
+    padding-left: 18px;
+    margin-top: 10px;
+}
+
+.details-list li {
+    color: #475569;
+    font-size: 12px;
+    margin-bottom: 7px;
+    line-height: 1.7;
+}
+
+/* Footer */
+.cv-footer {
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+    text-align: center;
+}
+
+.cv-footer p {
+    font-size: 13px;
+    color: var(--navy);
+    font-weight: bold;
+}
+
+.cv-footer span {
+    font-size: 10px;
+    color: var(--muted);
+}
+
+/* Tablet and Mobile Responsive Design */
+@media (max-width: 700px) {
+    body {
+        padding: 12px;
+    }
+
+    .cv-container {
+        grid-template-columns: 1fr;
+    }
+
+    .sidebar {
+        padding: 30px 25px;
+    }
+
+    .main-content {
+        padding: 28px 22px;
+    }
+
+    .profile h1 {
+        font-size: 25px;
+    }
+
+    .section-title {
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 380px) {
+    .expertise-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .main-content {
+        padding: 22px 16px;
+    }
+}
+
+/* Print / Save as PDF */
+@media print {
+    @page {
+        size: A4;
+        margin: 0;
+    }
+
+    body {
+        padding: 0;
+        background: white;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .cv-container {
+        max-width: none;
+        width: 100%;
+        margin: 0;
+        box-shadow: none;
+        border-radius: 0;
+    }
+
+    .sidebar {
+        padding: 25px 18px;
+    }
+
+    .main-content {
+        padding: 28px 22px;
+    }
+
+    .content-section,
+    .timeline-item,
+    .expertise-card {
+        break-inside: avoid;
+    }
+
+    .expertise-card:hover {
+        transform: none;
+        box-shadow: none;
+    }
+
+    a {
+        text-decoration: none;
+    }
+}
