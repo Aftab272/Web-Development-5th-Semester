@@ -1,9 +1,4 @@
 
-/* ==================================
-   PROFESSIONAL CV - CSS STYLESHEET
-   ================================== */
-
-/* Reset */
 * {
     margin: 0;
     padding: 0;
@@ -11,10 +6,10 @@
 }
 
 :root {
-    --navy: #14243a;
-    --blue: #2563eb;
+    --navy: #1c143a;
+    --blue: #2532eb;
     --light-blue: #dbeafe;
-    --text: #273449;
+    --text: #274929;
     --muted: #64748b;
     --background: #f1f5f9;
     --white: #ffffff;
@@ -29,7 +24,6 @@ body {
     padding: 35px 15px;
 }
 
-/* Main CV Layout */
 .cv-container {
     display: grid;
     grid-template-columns: 34% 66%;
@@ -41,14 +35,12 @@ body {
     overflow: hidden;
 }
 
-/* Left Sidebar */
 .sidebar {
     background: var(--navy);
     color: var(--white);
     padding: 35px 25px;
 }
 
-/* Profile */
 .profile {
     text-align: center;
     padding-bottom: 28px;
@@ -83,7 +75,6 @@ body {
     font-weight: 600;
 }
 
-/* Sidebar Sections */
 .sidebar-section {
     margin-top: 27px;
 }
@@ -97,7 +88,6 @@ body {
     border-bottom: 2px solid #3b82f6;
 }
 
-/* Contact Details */
 .contact-item {
     display: flex;
     align-items: flex-start;
@@ -109,11 +99,11 @@ body {
 .contact-item i {
     width: 16px;
     margin-top: 4px;
-    color: #93c5fd;
+    color: #fd9f93;
 }
 
 .contact-item a {
-    color: #f8fafc;
+    color: #fcf8f8;
     text-decoration: none;
     overflow-wrap: anywhere;
 }
@@ -123,7 +113,6 @@ body {
     text-decoration: underline;
 }
 
-/* Skill Bars */
 .skill {
     margin-bottom: 17px;
 }
@@ -135,7 +124,7 @@ body {
 
 .skill-bar {
     height: 6px;
-    background: #34465e;
+    background: #5e3454;
     border-radius: 10px;
     overflow: hidden;
 }
@@ -143,11 +132,10 @@ body {
 .skill-bar span {
     display: block;
     height: 100%;
-    background: #60a5fa;
+    background: #fa60f2;
     border-radius: 10px;
 }
 
-/* Sidebar List */
 .sidebar-list {
     list-style: none;
 }
@@ -163,11 +151,10 @@ body {
     content: "✓";
     position: absolute;
     left: 0;
-    color: #93c5fd;
+    color: #b1fd93a8;
     font-weight: bold;
 }
 
-/* Right Content */
 .main-content {
     padding: 40px 35px;
     min-width: 0;
@@ -194,15 +181,13 @@ body {
     font-size: 18px;
 }
 
-/* Summary */
 .summary {
     font-size: 13px;
     line-height: 1.9;
     text-align: justify;
-    color: #475569;
+    color: #68694791;
 }
 
-/* Education and Experience */
 .timeline-item {
     border-left: 3px solid var(--blue);
     padding: 0 0 5px 18px;
@@ -241,7 +226,6 @@ body {
     color: var(--muted);
 }
 
-/* Expertise Cards */
 .expertise-grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -250,7 +234,7 @@ body {
 
 .expertise-card {
     padding: 16px 13px;
-    background: #f8fafc;
+    background: #fcf8fb9c;
     border: 1px solid var(--border);
     border-radius: 7px;
     transition: transform 0.2s, box-shadow 0.2s;
@@ -279,20 +263,18 @@ body {
     line-height: 1.7;
 }
 
-/* Experience Details */
 .details-list {
     padding-left: 18px;
     margin-top: 10px;
 }
 
 .details-list li {
-    color: #475569;
+    color: #476967c0;
     font-size: 12px;
     margin-bottom: 7px;
     line-height: 1.7;
 }
 
-/* Footer */
 .cv-footer {
     padding-top: 20px;
     border-top: 1px solid var(--border);
@@ -310,7 +292,6 @@ body {
     color: var(--muted);
 }
 
-/* Tablet and Mobile Responsive Design */
 @media (max-width: 700px) {
     body {
         padding: 12px;
@@ -347,7 +328,6 @@ body {
     }
 }
 
-/* Print / Save as PDF */
 @media print {
     @page {
         size: A4;
