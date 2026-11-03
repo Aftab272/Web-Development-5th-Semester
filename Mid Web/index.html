@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="description" content="Typing Challenge Game: A responsive typing game featuring Bubbles Letter Recognition and KeyMagnet Keyboard Precision.">
+  <title>Typing Challenge Game | Keystroke & Reflex Arena</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700;800&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="app" class="app-container">
+
+    <div class="ambient-glow glow-1"></div>
+    <div class="ambient-glow glow-2"></div>
+    <div class="ambient-glow glow-3"></div>
+    <div class="ambient-grid"></div>
+
+    <header class="game-header">
+      <div class="brand" id="brand-home-btn" role="button" tabindex="0" title="Return to Home / Mode Selection">
+
+        <div class="brand-logo-wrap">
+          <svg class="brand-svg-logo" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#a5f3fc"/>
+                <stop offset="50%" stop-color="#38bdf8"/>
+                <stop offset="100%" stop-color="#0284c7"/>
+              </linearGradient>
+              <linearGradient id="keyGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#0f2b52"/>
+                <stop offset="100%" stop-color="#061226"/>
+              </linearGradient>
+              <filter id="neonGlow" x="-20%" y="-20%" width="140%" height="140%">
+                <feGaussianBlur stdDeviation="3" result="blur"/>
+                <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+              </filter>
+            </defs>
+
+            <rect x="4" y="4" width="40" height="40" rx="12" fill="url(#keyGrad)" stroke="url(#logoGrad)" stroke-width="2.5" filter="url(#neonGlow)"/>
+
+            <rect x="10" y="10" width="28" height="28" rx="7" fill="#040b17" stroke="rgba(56,189,248,0.35)" stroke-width="1.5"/>
+
+            <path d="M16 18H32M24 18V31" stroke="url(#logoGrad)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+
+            <path d="M28 26L35 22L30 32L34 32L27 38" stroke="#38bdf8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.95"/>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <div class="brand-title-row">
+            <span class="brand-title">TYPING <span class="highlight">CHALLENGE</span></span>
+            <span class="badge-pro">GAME</span>
+          </div>
+        </div>
+      </div>
+
+      <nav class="header-nav">
+        <button id="nav-bubbles-btn" class="nav-tab-btn" data-mode="bubbles" title="Play Mode A: Bubbles">
+          <span class="tab-icon">🫧</span>
+          <span class="tab-label">Mode A: Bubbles</span>
+        </button>
+        <button id="nav-keymagnet-btn" class="nav-tab-btn" data-mode="keymagnet" title="Play Mode B: KeyMagnet">
+          <span class="tab-icon">🧲</span>
+          <span class="tab-label">Mode B: KeyMagnet</span>
+        </button>
+      </nav>
+
+      <div class="header-actions">
+
+        <button id="guide-modal-btn" class="btn btn-ghost btn-sm header-guide-btn" title="View Project Specs & Rules">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"></circle>
+            <path d="M12 16v-4M12 8h.01"></path>
+          </svg>
+          <span class="guide-btn-label">Rules & Specs</span>
+        </button>
+
+        <button id="toggle-sound-btn" class="action-icon-btn" title="Toggle Sound (Mute/Unmute)" aria-label="Toggle Sound">
+          <svg id="sound-icon-on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+            <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+          </svg>
+          <svg id="sound-icon-off" class="hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+            <line x1="23" y1="9" x2="17" y2="15"></line>
+            <line x1="17" y1="9" x2="23" y2="15"></line>
+          </svg>
+        </button>
+
+        <button id="toggle-vk-btn" class="action-icon-btn" title="Toggle Touch Keyboard (Mobile)" aria-label="Toggle Touch Keyboard">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="2" y="5" width="20" height="14" rx="2"></rect>
+            <line x1="6" y1="10" x2="6" y2="10.01"></line>
+            <line x1="10" y1="10" x2="10.01"></line>
+            <line x1="14" y1="10" x2="14.01"></line>
+            <line x1="18" y1="10" x2="18.01"></line>
+            <line x1="8" y1="14" x2="16" y2="14"></line>
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <main class="game-main">
+
+      <section id="screen-home" class="screen-view active choose-level-screen">
+
+        <div class="cosmic-stars-layer"></div>
+        <div class="cosmic-horizon-glow"></div>
+
+        <div class="home-modes-container">
+          <div class="home-mode-box box-mode-a">
+            <div class="mode-box-header">
+              <div class="mode-box-icon">🫧</div>
+              <div class="mode-box-title-group">
+                <span class="mode-box-tag">MODE A</span>
+                <h2 class="mode-box-title">Bubbles Challenge</h2>
+              </div>
+            </div>
+            <p class="mode-box-desc">Letter Recognition & Reflex Arena</p>
+            <div class="mode-box-divider"></div>
+            <ul class="mode-details-list">
+              <li class="mode-detail-item">
+                <span class="detail-icon">🔤</span>
+                <span class="detail-text"><strong>3D Falling Letters:</strong> Vibrant block letters falling with neon trails</span>
+              </li>
+              <li class="mode-detail-item">
+                <span class="detail-icon">⚡</span>
+                <span class="detail-text"><strong>Combo Streaks:</strong> Score up to 4x multiplier (+10 pts per pop)</span>
+              </li>
+              <li class="mode-detail-item">
+                <span class="detail-icon">⚠️</span>
+                <span class="detail-text"><strong>Accuracy Penalty:</strong> -5 pts on wrong keystroke, 6-miss tolerance</span>
+              </li>
+              <li class="mode-detail-item">
+                <span class="detail-icon">📈</span>
+                <span class="detail-text"><strong>Speed Scaling:</strong> Velocities increase dynamically as score rises</span>
+              </li>
+            </ul>
+            <div class="mode-box-footer-action">
+              <button class="open-level-btn btn-open-level-a" id="btn-open-level-bubbles">
+                <span>⚡ CHOOSE LEVEL</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="home-mode-box box-mode-b">
+            <div class="mode-box-header">
+              <div class="mode-box-icon">🧲</div>
+              <div class="mode-box-title-group">
+                <span class="mode-box-tag">MODE B</span>
+                <h2 class="mode-box-title">KeyMagnet Precision</h2>
+              </div>
+            </div>
+            <p class="mode-box-desc">Posture Mastery & Keystroke Precision</p>
+            <div class="mode-box-divider"></div>
+            <ul class="mode-details-list">
+              <li class="mode-detail-item">
+                <span class="detail-icon">🍅</span>
+                <span class="detail-text"><strong>Mascot Conveyor:</strong> Animated tomato runner across key targets</span>
+              </li>
+              <li class="mode-detail-item">
+                <span class="detail-icon">🖐️</span>
+                <span class="detail-text"><strong>Posture Guide:</strong> Dual hand silhouettes with glowing finger cues</span>
+              </li>
+              <li class="mode-detail-item">
+                <span class="detail-icon">⌨️</span>
+                <span class="detail-text"><strong>Mechanical Keyboard:</strong> Tactile travel with home-row bumps on F & J</span>
+              </li>
+              <li class="mode-detail-item">
+                <span class="detail-icon">⏱️</span>
+                <span class="detail-text"><strong>Reaction Tracking:</strong> Real-time millisecond timing & speed tiers</span>
+              </li>
+            </ul>
+            <div class="mode-box-footer-action">
+              <button class="open-level-btn btn-open-level-b" id="btn-open-level-keymagnet">
+                <span>🎯 CHOOSE LEVEL</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="screen-gameplay" class="screen-view">
+
+        <div class="arena-controls-bar">
+          <div class="mode-indicator">
+            <button id="arena-back-menu-btn" class="btn btn-ghost btn-sm" title="Return to Menu">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"></polyline></svg>
+              Home Menu
+            </button>
+            <div class="current-mode-tag" id="current-mode-label">
+              <span id="current-mode-icon">🫧</span>
+              <span id="current-mode-name">Mode A: Bubbles</span>
+            </div>
+          </div>
+
+          <div class="difficulty-control" role="group" aria-label="Difficulty Levels">
+            <span class="control-label">Difficulty:</span>
+            <div class="difficulty-pills">
+              <button class="diff-btn active" data-diff="easy" id="diff-easy-btn" title="Gentle pace & generous timing">Easy</button>
+              <button class="diff-btn" data-diff="medium" id="diff-medium-btn" title="Standard arcade challenge">Medium</button>
+              <button class="diff-btn" data-diff="hard" id="diff-hard-btn" title="Rapid reflex test">Hard</button>
+            </div>
+          </div>
+
+          <div class="keyset-control hidden" id="keyset-control-wrapper">
+            <label for="keyset-select" class="control-label">Practice Set:</label>
+            <select id="keyset-select" class="custom-select">
+              <option value="homerow">Home Row (A, S, D, F, J, K, L)</option>
+              <option value="toprow">Top Row (Q, W, E, R, T, Y, U, I, O, P)</option>
+              <option value="bottomrow">Bottom Row (Z, X, C, V, B, N, M)</option>
+              <option value="allletters">All Letters (A - Z)</option>
+              <option value="alphanumeric">Alphanumeric (A - Z, 0 - 9)</option>
+            </select>
+          </div>
+
+          <div class="game-action-buttons">
+            <button id="game-start-btn" class="btn btn-success btn-sm">
+              <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+              Start
+            </button>
+            <button id="game-restart-btn" class="btn btn-warning btn-sm" disabled>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 4v6h-6M1 20v-6h6"></path><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>
+              Restart
+            </button>
+            <button id="game-reset-btn" class="btn btn-danger btn-sm">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>
+              Reset
+            </button>
+          </div>
+        </div>
+
+        <div class="status-hud">
+
+          <div class="hud-tile tile-score">
+            <span class="hud-label">Score</span>
+            <div class="hud-value-group">
+              <span class="hud-val" id="hud-score-val">0</span>
+              <span class="hud-subval" id="hud-score-bonus"></span>
+            </div>
+          </div>
+
+          <div class="hud-tile tile-combo">
+            <span class="hud-label">Combo Streak</span>
+            <div class="combo-meter-wrap">
+              <span class="combo-val" id="hud-combo-val">0x</span>
+              <div class="combo-progress-bar">
+                <div class="combo-progress-fill" id="combo-fill" style="width: 0%"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="hud-tile tile-misses" id="hud-misses-tile">
+            <div class="hud-header-between">
+              <span class="hud-label">Ceiling Misses</span>
+              <span class="hud-limit-tag" id="misses-limit-tag">0 / 6</span>
+            </div>
+            <div class="misses-indicators" id="misses-indicators-container">
+              <div class="miss-dot" data-index="1" title="Miss Slot 1"></div>
+              <div class="miss-dot" data-index="2" title="Miss Slot 2"></div>
+              <div class="miss-dot" data-index="3" title="Miss Slot 3"></div>
+              <div class="miss-dot" data-index="4" title="Miss Slot 4"></div>
+              <div class="miss-dot" data-index="5" title="Miss Slot 5"></div>
+              <div class="miss-dot" data-index="6" title="Miss Slot 6 (Game Over)"></div>
+            </div>
+          </div>
+
+          <div class="hud-tile tile-keymagnet-stats hidden" id="hud-keymagnet-tile">
+            <div class="km-stat-col">
+              <span class="hud-label">Avg Reaction</span>
+              <span class="hud-val-accent" id="hud-avg-rt">0 ms</span>
+            </div>
+            <div class="km-divider"></div>
+            <div class="km-stat-col">
+              <span class="hud-label">Targets Hit</span>
+              <span class="hud-val" id="hud-km-progress">0 / 25</span>
+            </div>
+          </div>
+
+          <div class="hud-tile tile-accuracy">
+            <span class="hud-label">Accuracy & Keys</span>
+            <div class="accuracy-metrics">
+              <span class="hud-val text-accuracy" id="hud-accuracy-val">100%</span>
+              <span class="key-counts">
+                <span class="correct-text" id="hud-correct-keys">✓ 0</span> |
+                <span class="incorrect-text" id="hud-wrong-keys">✗ 0</span>
+              </span>
+            </div>
+          </div>
+
+          <div class="hud-tile tile-timer">
+            <span class="hud-label" id="hud-timer-label">Survival Timer</span>
+            <div class="timer-display" id="hud-timer-val">60s</div>
+          </div>
+        </div>
+
+        <div id="arena-bubbles" class="game-arena-view active skyline-city-arena">
+
+          <div class="skyline-sky-layer">
+            <span class="sky-faint-letter fl-p">P</span>
+            <span class="sky-faint-letter fl-r">R</span>
+            <span class="sky-faint-letter fl-t">T</span>
+            <span class="sky-faint-letter fl-q">Q</span>
+            <span class="sky-faint-letter fl-m">M</span>
+            <span class="sky-faint-letter fl-n">N</span>
+            <span class="sky-faint-letter fl-l">L</span>
+            <span class="sky-faint-letter fl-w">W</span>
+            <span class="sky-faint-letter fl-x">X</span>
+            <span class="sky-faint-letter fl-y">Y</span>
+          </div>
+
+          <div class="sky-clouds-layer">
+            <div class="sky-cloud cloud-1"></div>
+            <div class="sky-cloud cloud-2"></div>
+            <div class="sky-cloud cloud-3"></div>
+            <div class="sky-cloud cloud-4"></div>
+          </div>
+
+          <div class="skyline-city-backdrop">
+            <svg class="cityscape-svg" viewBox="0 0 1200 420" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+
+              <path d="M0 260 Q300 230 600 250 T1200 240 L1200 420 L0 420 Z" fill="#7ba5e8" opacity="0.45"/>
+
+              <rect x="80" y="160" width="55" height="160" rx="3" fill="#608ecb" opacity="0.6"/>
+              <rect x="150" y="140" width="45" height="180" rx="3" fill="#5885c2" opacity="0.6"/>
+              <rect x="210" y="180" width="60" height="140" rx="3" fill="#6893cf" opacity="0.6"/>
+              <rect x="340" y="150" width="50" height="170" rx="3" fill="#5c89c7" opacity="0.6"/>
+              <rect x="410" y="120" width="65" height="200" rx="3" fill="#517ebb" opacity="0.65"/>
+
+              <path d="M570 320 L570 120 L585 100 L587 40 L589 100 L605 120 L605 320 Z" fill="#4d7bb8" opacity="0.75"/>
+              <rect x="562" y="140" width="50" height="180" rx="2" fill="#5c87c2" opacity="0.7"/>
+
+              <rect x="630" y="130" width="58" height="190" rx="3" fill="#537fbd" opacity="0.65"/>
+              <rect x="710" y="160" width="50" height="160" rx="3" fill="#5c88c4" opacity="0.6"/>
+              <rect x="780" y="175" width="65" height="145" rx="3" fill="#6691cb" opacity="0.6"/>
+              <rect x="870" y="145" width="55" height="175" rx="3" fill="#5884bf" opacity="0.6"/>
+              <rect x="945" y="165" width="50" height="155" rx="3" fill="#608dc8" opacity="0.6"/>
+              <rect x="1015" y="125" width="60" height="195" rx="3" fill="#537ebd" opacity="0.65"/>
+
+              <rect x="15" y="210" width="60" height="130" rx="4" fill="#3d669e"/>
+              <rect x="90" y="195" width="70" height="145" rx="4" fill="#446fa9"/>
+              <rect x="280" y="225" width="55" height="115" rx="4" fill="#3e68a1"/>
+              <rect x="490" y="235" width="65" height="105" rx="4" fill="#3a6299"/>
+              <rect x="690" y="205" width="75" height="135" rx="4" fill="#426ca5"/>
+              <rect x="850" y="215" width="65" height="125" rx="4" fill="#3c659c"/>
+              <rect x="1100" y="190" width="80" height="150" rx="4" fill="#406a9f"/>
+
+              <g fill="#a5c8ff" opacity="0.55">
+                <rect x="25" y="225" width="8" height="6" rx="1"/>
+                <rect x="40" y="225" width="8" height="6" rx="1"/>
+                <rect x="25" y="240" width="8" height="6" rx="1"/>
+                <rect x="40" y="240" width="8" height="6" rx="1"/>
+                <rect x="105" y="210" width="8" height="6" rx="1"/>
+                <rect x="125" y="210" width="8" height="6" rx="1"/>
+                <rect x="105" y="225" width="8" height="6" rx="1"/>
+                <rect x="125" y="225" width="8" height="6" rx="1"/>
+                <rect x="705" y="220" width="8" height="6" rx="1"/>
+                <rect x="725" y="220" width="8" height="6" rx="1"/>
+                <rect x="745" y="220" width="8" height="6" rx="1"/>
+              </g>
+
+              <path d="M0 310 Q300 305 600 308 T1200 310 L1200 335 L0 335 Z" fill="#2d5282"/>
+
+              <circle cx="15" cy="305" r="18" fill="#15803d"/>
+              <circle cx="35" cy="302" r="16" fill="#16a34a"/>
+              <circle cx="55" cy="305" r="14" fill="#22c55e"/>
+              <circle cx="120" cy="310" r="15" fill="#15803d"/>
+              <circle cx="140" cy="308" r="17" fill="#16a34a"/>
+              <circle cx="210" cy="312" r="16" fill="#16a34a"/>
+              <circle cx="230" cy="310" r="14" fill="#22c55e"/>
+              <circle cx="890" cy="310" r="18" fill="#15803d"/>
+              <circle cx="915" cy="307" r="16" fill="#16a34a"/>
+              <circle cx="940" cy="312" r="15" fill="#22c55e"/>
+              <circle cx="1140" cy="305" r="22" fill="#15803d"/>
+              <circle cx="1170" cy="302" r="20" fill="#16a34a"/>
+
+              <rect x="0" y="325" width="1200" height="15" fill="#475569"/>
+              <line x1="0" y1="326" x2="1200" y2="326" stroke="#94a3b8" stroke-width="2"/>
+
+              <rect x="0" y="340" width="1200" height="80" fill="url(#waterGrad)"/>
+              <defs>
+                <linearGradient id="waterGrad" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#1e40af"/>
+                  <stop offset="40%" stop-color="#1e3a8a"/>
+                  <stop offset="100%" stop-color="#0f172a"/>
+                </linearGradient>
+              </defs>
+
+              <ellipse cx="600" cy="370" rx="280" ry="6" fill="#38bdf8" opacity="0.3"/>
+              <ellipse cx="400" cy="385" rx="180" ry="4" fill="#60a5fa" opacity="0.25"/>
+              <ellipse cx="800" cy="385" rx="190" ry="4" fill="#60a5fa" opacity="0.25"/>
+            </svg>
+          </div>
+
+          <div class="bubbles-playfield" id="bubbles-playfield">
+            <canvas id="bubbles-particle-canvas"></canvas>
+            <div id="bubbles-layer" class="bubbles-layer"></div>
+          </div>
+
+          <div class="mode-a-hud-header" style="display:none;">
+            <span id="ma-hud-score">0</span>
+            <span id="ma-hud-level">1</span>
+            <span id="ma-hud-combo">0x</span>
+            <span id="ma-hud-acc">100%</span>
+            <span id="ma-hud-popped">0</span>
+            <div id="ma-hearts-bar"></div>
+          </div>
+
+          <div class="skyline-bottom-hud">
+            <div class="hud-metric-col">
+              <span class="hud-metric-label">SCORE</span>
+              <span class="hud-metric-val val-gold" id="skyline-hud-score">0</span>
+            </div>
+            <div class="hud-metric-divider"></div>
+            <div class="hud-metric-col">
+              <span class="hud-metric-label">LEVEL</span>
+              <span class="hud-metric-val val-gold" id="skyline-hud-level">1</span>
+            </div>
+            <div class="hud-metric-divider"></div>
+            <div class="hud-metric-col">
+              <span class="hud-metric-label">TIME</span>
+              <span class="hud-metric-val val-gold" id="skyline-hud-time">00:60</span>
+            </div>
+          </div>
+        </div>
+
+        <div id="arena-keymagnet" class="game-arena-view">
+
+          <div class="mb-top-header">
+            <div class="mb-timer-widget">
+              <svg class="mb-clock-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
+              </svg>
+              <span class="mb-timer-text" id="mb-clock-val">00:00</span>
+            </div>
+
+            <div class="mb-header-tools">
+              <button class="mb-tool-button" id="mb-settings-btn" title="Practice Key Set / Settings">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                  <circle cx="12" cy="12" r="3"></circle>
+                  <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+                </svg>
+              </button>
+              <button class="mb-tool-button" id="mb-restart-btn" title="Restart Challenge">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <path d="M23 4v6h-6M1 20v-6h6"></path>
+                  <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path>
+                </svg>
+              </button>
+              <button class="mb-tool-button" id="mb-pause-btn" title="Pause / Home Menu">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <rect x="6" y="4" width="4" height="16" rx="1"></rect>
+                  <rect x="14" y="4" width="4" height="16" rx="1"></rect>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <div class="mb-instruction-banner">
+            <span>Press <span id="km-finger-guidance">Left Index Finger</span></span>
+            <div class="mb-target-badge" id="km-target-letter">F</div>
+          </div>
+
+          <div id="km-target-core" style="display:none;"><div id="km-reflex-fill"></div></div>
+          <span id="km-last-rt" style="display:none;"></span>
+
+          <div class="mb-conveyor-stage">
+
+            <div class="mb-mascot-container" id="mb-mascot-char">
+              <svg class="tomato-mascot-svg" viewBox="0 0 100 110" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+                <path d="M50 20 C46 8 52 3 56 1 C54 7 52 13 50 20 Z" fill="#15803d" stroke="#000" stroke-width="2.2" stroke-linejoin="round"/>
+                <path d="M48 22 C34 14 25 20 21 24 C29 25 38 26 48 22 Z" fill="#22c55e" stroke="#000" stroke-width="2.2" stroke-linejoin="round"/>
+                <path d="M52 22 C66 14 75 20 79 24 C71 25 62 26 52 22 Z" fill="#22c55e" stroke="#000" stroke-width="2.2" stroke-linejoin="round"/>
+                <path d="M50 23 C44 28 38 31 32 33 C40 31 45 28 50 23 Z" fill="#16a34a" stroke="#000" stroke-width="2" stroke-linejoin="round"/>
+                <path d="M50 23 C56 28 62 31 68 33 C60 31 55 28 50 23 Z" fill="#16a34a" stroke="#000" stroke-width="2" stroke-linejoin="round"/>
+
+                <ellipse cx="50" cy="56" rx="38" ry="32" fill="#ef4444" stroke="#000" stroke-width="3"/>
+                <ellipse cx="30" cy="42" rx="10" ry="6" fill="#fca5a5" opacity="0.65" transform="rotate(-20 30 42)"/>
+
+                <ellipse cx="38" cy="46" rx="13" ry="15" fill="#ffffff" stroke="#000" stroke-width="2.8"/>
+                <ellipse cx="62" cy="46" rx="13" ry="15" fill="#ffffff" stroke="#000" stroke-width="2.8"/>
+                <ellipse cx="42" cy="47" rx="5.5" ry="6.5" fill="#000000"/>
+                <ellipse cx="66" cy="47" rx="5.5" ry="6.5" fill="#000000"/>
+                <circle cx="40" cy="44" r="2.5" fill="#ffffff"/>
+                <circle cx="64" cy="44" r="2.5" fill="#ffffff"/>
+
+                <path d="M37 66 Q50 80 63 66 Z" fill="#881337" stroke="#000" stroke-width="2.8" stroke-linejoin="round"/>
+                <path d="M41 66 Q50 71 59 66 L57 69 Q50 74 43 69 Z" fill="#ffffff" stroke="#000" stroke-width="1.8" stroke-linejoin="round"/>
+
+                <path d="M12 55 C6 59 6 68 13 71 C17 71 19 67 17 60 Z" fill="#ffffff" stroke="#000" stroke-width="2.5"/>
+                <path d="M88 55 C94 59 94 68 87 71 C83 71 81 67 83 60 Z" fill="#ffffff" stroke="#000" stroke-width="2.5"/>
+
+                <ellipse cx="37" cy="94" rx="12" ry="7" fill="#dc2626" stroke="#000" stroke-width="2.5"/>
+                <rect x="25" y="96" width="24" height="5" rx="2.5" fill="#ffffff" stroke="#000" stroke-width="1.8"/>
+                <ellipse cx="63" cy="94" rx="12" ry="7" fill="#dc2626" stroke="#000" stroke-width="2.5"/>
+                <rect x="51" y="96" width="24" height="5" rx="2.5" fill="#ffffff" stroke="#000" stroke-width="1.8"/>
+              </svg>
+            </div>
+
+            <div class="mb-belt-track" id="mb-belt-track">
+
+            </div>
+          </div>
+
+          <div class="mb-keyboard-stage-wrapper">
+
+            <div class="mb-hand-container mb-hand-left" title="Left Hand Finger Guidance">
+              <svg class="mb-hand-svg" viewBox="0 0 100 135" xmlns="http://www.w3.org/2000/svg">
+
+                <path d="M 28 135 L 28 88 C 18 84 13 74 10 58 C 8 48 14 44 20 50 C 22 52 23 60 24 64 C 24 47 26 27 32 24 C 37 22 40 28 40 40 C 41 27 44 16 50 14 C 56 12 59 20 59 34 C 61 22 65 17 70 18 C 75 19 76 27 74 44 C 79 40 86 42 86 50 C 86 64 80 84 70 102 L 68 135 Z" fill="#629819" />
+
+                <circle id="dot-l-pinky" cx="15" cy="53" r="5.5" class="hand-dot" />
+                <circle id="dot-l-ring" cx="35" cy="27" r="5.5" class="hand-dot" />
+                <circle id="dot-l-middle" cx="54" cy="17" r="5.5" class="hand-dot" />
+                <circle id="dot-l-index" cx="72" cy="21" r="5.5" class="hand-dot" />
+                <circle id="dot-l-thumb" cx="84" cy="54" r="5.5" class="hand-dot" />
+              </svg>
+            </div>
+
+            <div class="mb-keyboard-board" id="interactive-keyboard">
+
+            </div>
+
+            <div class="mb-hand-container mb-hand-right" title="Right Hand Finger Guidance">
+              <svg class="mb-hand-svg" viewBox="0 0 100 135" xmlns="http://www.w3.org/2000/svg">
+
+                <path d="M 72 135 L 72 88 C 82 84 87 74 90 58 C 92 48 86 44 80 50 C 78 52 77 60 76 64 C 76 47 74 27 68 24 C 63 22 60 28 60 40 C 59 27 56 16 50 14 C 44 12 41 20 41 34 C 39 22 35 17 30 18 C 25 19 24 27 26 44 C 21 40 14 42 14 50 C 14 64 20 84 30 102 L 32 135 Z" fill="#629819" />
+
+                <circle id="dot-r-thumb" cx="16" cy="54" r="5.5" class="hand-dot" />
+                <circle id="dot-r-index" cx="28" cy="21" r="5.5" class="hand-dot" />
+                <circle id="dot-r-middle" cx="46" cy="17" r="5.5" class="hand-dot" />
+                <circle id="dot-r-ring" cx="65" cy="27" r="5.5" class="hand-dot" />
+                <circle id="dot-r-pinky" cx="85" cy="53" r="5.5" class="hand-dot" />
+              </svg>
+            </div>
+          </div>
+
+          <div class="mb-grass-strip"></div>
+        </div>
+
+        <div id="feedback-banner" class="feedback-banner"></div>
+      </section>
+    </main>
+
+    <div id="virtual-keyboard-drawer" class="virtual-keyboard-drawer">
+      <div class="vk-header">
+        <span class="vk-title">Virtual Touch Keyboard (Mobile Input)</span>
+        <button id="vk-close-btn" class="vk-close-btn" aria-label="Close virtual keyboard">✕</button>
+      </div>
+      <div class="vk-grid" id="vk-touch-grid">
+
+      </div>
+    </div>
+
+    <dialog id="results-modal" class="results-dialog" closedby="any">
+      <div class="results-card results-card-v2">
+        <button id="res-close-x-btn" class="res-x-btn" aria-label="Close dialog">✕</button>
+
+        <div class="res-mascot-wrap">
+          <svg class="res-mascot-art" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+            <ellipse cx="50" cy="56" rx="34" ry="28" fill="#f59e0b"/>
+
+            <ellipse cx="44" cy="58" rx="22" ry="19" fill="#fef08a"/>
+
+            <path d="M48 32 C50 38 50 42 47 46" stroke="#d97706" stroke-width="3" stroke-linecap="round"/>
+            <path d="M56 32 C58 38 58 42 55 46" stroke="#d97706" stroke-width="3" stroke-linecap="round"/>
+            <path d="M64 34 C66 38 66 42 63 46" stroke="#d97706" stroke-width="3" stroke-linecap="round"/>
+
+            <polygon points="32,35 38,18 48,30" fill="#f59e0b" stroke="#d97706" stroke-width="2"/>
+            <polygon points="35,32 39,22 45,30" fill="#f43f5e"/>
+            <polygon points="62,32 68,16 78,30" fill="#f59e0b" stroke="#d97706" stroke-width="2"/>
+            <polygon points="65,30 69,20 75,30" fill="#f43f5e"/>
+
+            <circle cx="66" cy="48" r="5" fill="#0f172a"/>
+            <circle cx="68" cy="46" r="1.8" fill="#ffffff"/>
+
+            <ellipse cx="76" cy="52" rx="3.5" ry="2.5" fill="#f43f5e"/>
+            <ellipse cx="60" cy="54" rx="4" ry="3" fill="#fca5a5" opacity="0.6"/>
+
+            <ellipse cx="56" cy="78" rx="8" ry="5" fill="#fef08a" stroke="#d97706" stroke-width="1.5"/>
+            <ellipse cx="40" cy="78" rx="8" ry="5" fill="#fef08a" stroke="#d97706" stroke-width="1.5"/>
+
+            <path d="M18 52 C14 46 18 38 24 42" stroke="#f59e0b" stroke-width="7" stroke-linecap="round"/>
+          </svg>
+        </div>
+
+        <h2 class="res-title-text" id="res-title">Game over</h2>
+        <div class="res-points-hero" id="res-final-score">0 points</div>
+        <div class="res-streak-hero" id="res-stat-maxstreak">Accuracy streak: 0 words</div>
+
+        <span id="res-mode-tag" style="display:none;"></span>
+        <span id="res-badge-icon" style="display:none;"></span>
+        <div id="res-grade-circle" style="display:none;"></div>
+        <span id="res-stat-outcome" style="display:none;"></span>
+
+        <div class="res-cards-grid">
+
+          <div class="res-stat-box box-speed">
+            <div class="res-box-header">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+              <span>Speed</span>
+            </div>
+            <div class="res-box-body">
+              <div class="res-box-main"><span id="res-stat-rt">0</span> <span class="res-box-unit">cpm</span></div>
+              <div class="res-box-footer" id="res-new-record">New record!</div>
+            </div>
+          </div>
+
+          <div class="res-stat-box box-accuracy">
+            <div class="res-box-header">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="6" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="2"/></svg>
+              <span>Accuracy</span>
+            </div>
+            <div class="res-box-body">
+              <div class="res-box-main" id="res-stat-accuracy">100%</div>
+              <div class="res-box-footer">Precision Focus</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="res-breakdown-row">
+          <div class="breakdown-pill pill-correct">
+            <span class="pill-label">Correct:</span>
+            <span class="pill-val text-success" id="res-stat-correct">0</span>
+          </div>
+          <div class="breakdown-pill pill-wrong">
+            <span class="pill-label">Wrong:</span>
+            <span class="pill-val text-danger" id="res-stat-errors">0</span>
+          </div>
+          <div class="breakdown-pill pill-rank">
+            <span class="pill-label">Performance:</span>
+            <span class="pill-val" id="res-grade">Master (S)</span>
+          </div>
+        </div>
+
+        <div class="results-actions-v2">
+          <button id="res-play-again-btn" class="res-play-again-yellow-btn">
+            Play again
+          </button>
+          <button id="res-change-mode-btn" class="res-choose-level-link-btn">
+            Choose Level
+          </button>
+        </div>
+      </div>
+    </dialog>
+
+    <dialog id="guide-modal" class="results-dialog" closedby="any">
+      <div class="results-card guide-card">
+        <div class="results-header">
+          <div class="results-icon-badge">📋</div>
+          <div class="results-title-group">
+            <span class="results-mode-tag">Typing Challenge Game</span>
+            <h2 class="results-heading">Rubric & Mode Rules</h2>
+          </div>
+          <button id="guide-close-x-btn" class="res-x-btn" aria-label="Close guide">✕</button>
+        </div>
+
+        <div class="guide-scrollable-body">
+          <div class="guide-section">
+            <h3 class="guide-sec-title">🫧 Mode A: Bubbles (Letter Recognition)</h3>
+            <ul class="guide-list">
+              <li><strong>5+ Simultaneous Bubbles:</strong> At least 5 bubbles float upward with randomized organic sway.</li>
+              <li><strong>Popping & Scoring:</strong> Pressing a key matching a visible bubble removes it and awards +10 points (multiplied by combo streak).</li>
+              <li><strong>Incorrect Key Penalty:</strong> Pressing a key with no matching bubble incurs an immediate <strong>-5 points</strong> penalty and resets combo.</li>
+              <li><strong>Boundary Miss Ceiling:</strong> When a bubble reaches the top red laser line, a miss is recorded. Game ends when <strong>6 misses</strong> are reached.</li>
+              <li><strong>Dynamic Difficulty:</strong> Speed scales up automatically as your score increases.</li>
+            </ul>
+          </div>
+
+          <div class="guide-section">
+            <h3 class="guide-sec-title">🧲 Mode B: KeyMagnet (Keyboard Precision)</h3>
+            <ul class="guide-list">
+              <li><strong>Target Key Station:</strong> Generates target keys from a configured array with a reflex countdown bar.</li>
+              <li><strong>Home-Row Practice Set:</strong> Mandatory default practice set (A, S, D, F, J, K, L) plus selectable Top Row, Bottom Row, and Full sets.</li>
+              <li><strong>Interactive Keyboard:</strong> Tactile feedback with mechanical keycap travel, bumps on F/J, and finger posture guidance.</li>
+              <li><strong>Reaction Time:</strong> Accurate millisecond response tracking with speed tiers (⚡ Lightning, ★ Swift, Good).</li>
+            </ul>
+          </div>
+
+          <div class="guide-section">
+            <h3 class="guide-sec-title">⚙️ Global Controls & Technical Architecture</h3>
+            <ul class="guide-list">
+              <li><strong>Controls:</strong> Start, Restart, and Reset operate smoothly without reloading the page.</li>
+              <li><strong>Difficulty Modes:</strong> Easy, Medium, and Hard change velocities, timer windows, and quotas.</li>
+              <li><strong>Technology:</strong> Pure semantic HTML5, modern responsive CSS3, and ES6+ JavaScript. Procedural audio synthesized via Web Audio API.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="results-footer">
+          <button id="guide-modal-close-btn" class="btn btn-primary" style="width: 100%;">
+            Got it, Let's Play!
+          </button>
+        </div>
+      </div>
+    </dialog>
+
+    <dialog id="level-modal-bubbles" class="results-dialog choose-level-dialog" closedby="any">
+      <div class="choose-level-popup-card card-theme-bubbles">
+        <button id="close-modal-bubbles" class="choose-popup-close-x" aria-label="Close Level Selection">✕</button>
+        <div class="choose-popup-header">
+          <span class="choose-popup-badge badge-bubbles">MODE A: BUBBLES</span>
+          <h2 class="choose-popup-title">CHOOSE LEVEL</h2>
+          <p class="choose-popup-subtitle">Select your difficulty pace to start</p>
+        </div>
+        <div class="choose-popup-buttons">
+          <button class="level-select-btn btn-popup-easy" data-mode="bubbles" data-level="easy" id="popup-bubbles-easy">EASY</button>
+          <button class="level-select-btn btn-popup-medium" data-mode="bubbles" data-level="medium" id="popup-bubbles-medium">MEDIUM</button>
+          <button class="level-select-btn btn-popup-hard" data-mode="bubbles" data-level="hard" id="popup-bubbles-hard">HARD</button>
+        </div>
+      </div>
+    </dialog>
+
+    <dialog id="level-modal-keymagnet" class="results-dialog choose-level-dialog" closedby="any">
+      <div class="choose-level-popup-card card-theme-keymagnet">
+        <button id="close-modal-keymagnet" class="choose-popup-close-x" aria-label="Close Level Selection">✕</button>
+        <div class="choose-popup-header">
+          <span class="choose-popup-badge badge-keymagnet">MODE B: KEYMAGNET</span>
+          <h2 class="choose-popup-title">CHOOSE LEVEL</h2>
+          <p class="choose-popup-subtitle">Select your keyboard reflex intensity</p>
+        </div>
+        <div class="choose-popup-buttons">
+          <button class="level-select-btn btn-popup-easy" data-mode="keymagnet" data-level="easy" id="popup-keymagnet-easy">EASY</button>
+          <button class="level-select-btn btn-popup-medium" data-mode="keymagnet" data-level="medium" id="popup-keymagnet-medium">MEDIUM</button>
+          <button class="level-select-btn btn-popup-hard" data-mode="keymagnet" data-level="hard" id="popup-keymagnet-hard">HARD</button>
+        </div>
+      </div>
+    </dialog>
+  </div>
+
+  <script src="sound.js"></script>
+
+  <script src="bubbles.js"></script>
+  <script src="keymagnet.js"></script>
+
+  <script src="app.js"></script>
+</body>
+</html>
